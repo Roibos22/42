@@ -6,7 +6,7 @@
 /*   By: lgrimmei <lgrimmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:11:42 by lgrimmei          #+#    #+#             */
-/*   Updated: 2023/09/26 18:26:38 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:08:49 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,16 @@ long long	get_timestamp(void)
 	}
 	else
 		return (0);
+}
+
+int	get_time_passed(struct timeval start)
+{
+	struct timeval	current;
+
+	if (gettimeofday(&current, NULL))
+		return (0);
+	return ((current.tv_sec - start.tv_sec) * 1000 \
+	+ (current.tv_usec - start.tv_usec) / 1000);
 }
 
 void	print_data(t_data *data)

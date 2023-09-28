@@ -6,7 +6,7 @@
 /*   By: lgrimmei <lgrimmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:56:59 by lgrimmei          #+#    #+#             */
-/*   Updated: 2023/09/26 18:25:50 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:09:13 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,14 @@ long int		ft_atoi(const char *nptr);
 void			go_think(t_philo *philo);
 void			go_sleep(t_philo *philo);
 void			go_eat(t_philo *philo);
+void			my_sleep(t_philo *philo, long long ms);
 
 // TIME AND LOG
 void			print_timestamp(long long start_time);
 long long		get_timestamp(void);
 void			print_log(t_philo *philo, int msg);
 void			print_data(t_data *data);
+int				get_time_passed(struct timeval start);
 
 // ROUTINE
 void			*routine(void *arg);

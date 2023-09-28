@@ -6,7 +6,7 @@
 /*   By: lgrimmei <lgrimmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:10:41 by lgrimmei          #+#    #+#             */
-/*   Updated: 2023/09/26 18:18:29 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:08:57 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,31 @@ void	go_sleep(t_philo *philo)
 {
 	set_philo_status(philo, SLEEPING);
 	print_log(philo, MSG_SLEEP);
-	usleep(philo->data->sleep_t * 1000);
+	my_sleep(philo, philo->data->sleep_t);
 }
 
 void	go_eat(t_philo *philo)
 {
-	usleep(100);
+	my_sleep(philo, 0);
 	lock_forks(philo);
 	set_philo_status(philo, EATING);
 	set_meals_count_plus_one(philo);
 	print_log(philo, MSG_EAT);
 	set_last_meal_ts(philo, get_timestamp());
-	usleep(philo->data->eat_t * 1000);
+	my_sleep(philo, philo->data->eat_t);
 	unlock_forks(philo);
+}
+
+void	my_sleep(t_philo *philo, long long ms)
+{
+	struct timeval	start_ts;
+
+	gettimeofday(&start_ts, NULL);
+	while (1)
+	{
+		usleep(100);
+		ask_to_continue(philo);
+		if (get_time_passed(start_ts) >= ms)
+			return ;
+	}
 }
