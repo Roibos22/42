@@ -6,7 +6,7 @@
 /*   By: leon <leon@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:07:09 by leon              #+#    #+#             */
-/*   Updated: 2023/10/03 15:15:28 by leon             ###   ########.fr       */
+/*   Updated: 2023/10/04 16:21:56 by leon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,14 @@
 #  define BUFFER_SIZE 10
 # endif
 
-char  *get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2);
+int	    ft_strlen(const char *s);
+char	*ft_strdup(const char *s);
+int	    ft_no_newline(const char *s);
+int	    clean_res_get_start(char *res);
+char	*clean_res(char *res, int bread);
+char	*get_full_line(char *res, int bread);
+char	*get_next_line(int fd);
 
-int     ft_no_newline(char *s);
-char    *get_line(char *res, int bread);
-char    *clean_res(char *res, int bread);
-
-// UTILS
-
-size_t ft_strlen_to(const char *s, char c);
-char    *ft_strdup(const char *s);
-char *ft_strjoin(char *s1, const char *s2);
 
 #endif

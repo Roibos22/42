@@ -6,7 +6,7 @@
 /*   By: leon <leon@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:05:55 by leon              #+#    #+#             */
-/*   Updated: 2023/10/03 16:28:58 by leon             ###   ########.fr       */
+/*   Updated: 2023/10/04 16:20:36 by leon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,156 +31,178 @@
     return(0);
 } */
 
-char *get_next_line(int fd)
+char	*ft_strjoin(char *s1, char *s2)
 {
-    char        *line;
-    char        *buffer;
-    static char *res;
-    int         bread;
+	char	*res;
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-    bread = 1;
-    //printf("res0:%s\n", res);
-    while (ft_no_newline(res) == 1)
-    {
-        buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-        if (!buffer)
-            return (NULL);
-        bread = read(fd, buffer, BUFFER_SIZE);
-        if (bread <= 0)
-        {
-            free(buffer);
-            break ;
-        }
-        res = ft_strjoin(buffer, res);
-        free (buffer);
-    }
-    //printf("get line with res: %s and bread: %i\n", res, bread);
-    line = get_line(res, bread);
-    //printf("line: %s\n", line);
-    res = clean_res(res, bread);
-    return (line);
+	if (!s1)
+		s1 = ft_strdup("");
+	res = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!res)
+		return (free(s1), NULL);
+
+    int i = 0;
+	while (s1[i])
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		res[i + ft_strlen(s1)] = s2[i];
+		i++;
+	}
+	res[i + ft_strlen(s1)] = '\0';
+	free (s1);
+	return (res);
 }
 
-char *clean_res(char *res, int bread)
+int	ft_strlen(const char *s)
 {
-    int i = 0;
-    int start = ft_strlen_to(res, '\n');
-    char *new;
+	int	i;
 
-    if (bread == -1)
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(const char *s)
+{
+	int		len;
+	char	*dest;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(s);
+	dest = (char *)malloc((len + 1) * sizeof(char));
+	if (!dest)		
+		return (free(dest), NULL);
+	while (s[i])
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+
+int	ft_no_newline(const char *s)
+{
+	int	i = 0;
+	
+    if (!s)
+		return (1);
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	clean_res_get_start(char *res)
+{
+	int	start;
+
+	start = 0;
+	while (res[start])
+	{
+		if (res[start] == '\n')
+		{
+			start++;
+			break ;
+		}
+		start++;
+	}
+	return (start);
+}
+
+char	*clean_res(char *res, int bread)
+{
+	char	*new;
+	int		i;
+	int		start;
+
+	if (bread == -1)
 		return (free(res), NULL);
-    if (!res)
-        return (NULL);
-    new = malloc((ft_strlen_to(res, '\0') - start + 1) * sizeof(char));
-    if (!new)
-        return (NULL);
-    while (res[i + start])
-    {
-        new[i] = res[i + start];
-        i++;
-    }
-    new[i] = '\0';
-    return (new);
+	i = 0;
+	if (!res)
+		return (NULL);
+	start = clean_res_get_start(res);
+	if (!res[start])
+		return (free(res), NULL);
+	new = malloc((ft_strlen(res) + 1) * sizeof(char));
+	if (!new)
+		return (NULL);
+	while (i < ft_strlen(res) - start)
+	{
+		new[i] = res[i + start];
+		i++;
+	}
+	new[i] = '\0';
+	return (free(res), new);
 }
 
-char *get_line(char *res, int bread)
+char	*get_full_line(char *res, int bread)
 {
-    int   len;
-    char  *line;
-    int   i = 0;
+	char	*line;
+	int		i;
+	int		len;
 
-    if (bread == -1)
-        return (NULL);
-    if (!res)
-        return (NULL);
-    if (res[0] == '\n')
-        res = res + 1;
-    len = ft_strlen_to(res, '\n');
-    line = malloc((len + 1) * sizeof(char));
-    while (i < len)
-    {
-        line[i] = res[i];
-        i++;
-    }
-    line[i] = '\0';
-    return (line);
+	if (bread == -1)
+		return (NULL);
+	i = 0;
+	len = 0;
+	if (!res)
+		return (NULL);
+	while (res[len])
+	{
+		len++;
+		if (res[len - 1] == '\n')
+			break ;
+	}
+	line = malloc(len + 1);
+	while (i < len)
+	{
+		line[i] = res[i];
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
 }
 
-int ft_no_newline(char *s)
+char	*get_next_line(int fd)
 {
-    int i = 0;
-    
-    if (!s)
-        return (1);
-    while(s[i])
-    {
-        if (s[i] == '\n')
-            return (0);
-        i++; 
-    }
-    return (1);
+	char		*line;
+	char		*buffer;
+	static char	*res;
+	int			bread;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	bread = 1;
+	while (ft_no_newline(res) == 1)
+	{
+		buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+		if (!buffer)
+			return (NULL);
+		bread = read(fd, buffer, BUFFER_SIZE);
+		if (bread <= 0)
+		{
+			free (buffer);
+			break ;
+		}
+        buffer[bread] = '\0';
+		res = ft_strjoin(res, buffer);
+		free(buffer);
+	}
+	line = get_full_line(res, bread);
+	res = clean_res(res, bread);
+	return (line);
 }
-
-// UTILS
-
-size_t ft_strlen_to(const char *s, char c)
-{
-    int len;
-
-    len = 0;
-    if (!s)
-        return (0);
-    while(s[len] && (s[len] != c))
-        len++;
-    return (len);
-}
-
-char *ft_strdup(const char *s)
-{
-    char *dest;
-    int i;
-
-    if (!s)
-        return (NULL);
-    dest = malloc((ft_strlen_to(s, '\0') + 1) * sizeof(char));
-    if (!dest)
-        return (free(dest), NULL);
-    i = 0;
-    while (s[i])
-    {
-        dest[i] = s[i];
-        i++;
-    }
-    dest[i] = '\0';
-    return (dest);
-}
-
-char *ft_strjoin(char *s1, const char *s2)
-{
-    char *res;
-    int i = 0;
-    int j = 0;
-
-    if(!s1)
-        s1 = ft_strdup("");
-    if(!s2)
-        s2 = ft_strdup("");
-    res = malloc((ft_strlen_to(s1, '\0') + ft_strlen_to(s2, '\0') + 1) * sizeof(char));
-    if (!res)
-        return(free(s1), NULL);
-    while (s1[i])
-    {
-        res[i] = s1[i];
-        i++;
-    }
-    while (s2[j])
-    {
-        res[i + j] = s2[j];
-        j++;
-    }
-    res[i + j] = '\0';
-    return (res);
-}
-
