@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrimmei <lgrimmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:38:48 by lgrimmei          #+#    #+#             */
-/*   Updated: 2023/10/26 17:53:32 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2024/01/02 16:55:15 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ void	print_stack(t_stack **stack)
 	{
 		ft_printf("%d ", node->content);
 		node = node->next;
+	}
+	ft_printf("\n");
+}
+
+void	print_moves(t_stack *node)
+{
+	ft_printf("Node %i moves: ", node->content);
+	int i = 0;
+	while (node->moves[i])
+	{
+		ft_printf("%i, ", node->moves[i]);
+		i++;
 	}
 	ft_printf("\n");
 }
