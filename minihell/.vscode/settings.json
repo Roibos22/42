@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "compare": "c",
+        "type_traits": "c",
+        "wait.h": "c",
+        "minishell.h": "c",
+        "libft.h": "c",
+        "stdio.h": "c"
+    }
+}
