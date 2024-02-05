@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   free_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 16:27:15 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/01 15:24:21 by lgrimmei         ###   ########.fr       */
+/*   Created: 2024/01/05 11:08:22 by jschott           #+#    #+#             */
+/*   Updated: 2024/01/25 18:47:10 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstring>
-#include <iostream>
+#include "cub3D.h"
 
-int main(int argc, char **argv)
+int	free_window(t_window *window)
 {
-	if (argc == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
-	}
-	for (int i = 1; i < argc; i++)
-	{
-		for (int j = 0; j < (int)strlen(argv[i]); j++)
-			std::cout << (char)toupper(argv[i][j]);
-		std::cout << ' ';
-	}
-	std::cout << std::endl;
-	return 0;
+	mlx_destroy_image(window->mlx, window->img);
+	mlx_destroy_window(window->mlx, window->mlx_win);
+	mlx_destroy_display(window->mlx);
+	free (window->line_buffer);
+	free (window->mlx);
+	free (window);
+	return (0);
 }

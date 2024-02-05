@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Phonebook.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 16:27:15 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/01 15:24:21 by lgrimmei         ###   ########.fr       */
+/*   Created: 2024/01/26 18:12:28 by lgrimmei          #+#    #+#             */
+/*   Updated: 2024/01/26 18:20:20 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstring>
-#include <iostream>
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-int main(int argc, char **argv)
+# include "MyAwesomePhonebook.hpp"
+
+class Phonebook
 {
-	if (argc == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
-	}
-	for (int i = 1; i < argc; i++)
-	{
-		for (int j = 0; j < (int)strlen(argv[i]); j++)
-			std::cout << (char)toupper(argv[i][j]);
-		std::cout << ' ';
-	}
-	std::cout << std::endl;
-	return 0;
-}
+	private:
+		Contact		contacts[8];
+		int			contactsCount;
+
+	public:
+		Phonebook();
+		~Phonebook();
+
+		void		add_contact(Contact contact);
+		void		create_new_contact(void);
+		void		display_phonebook(void);
+};
+
+#endif

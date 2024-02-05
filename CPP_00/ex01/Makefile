@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/26 16:28:48 by lgrimmei          #+#    #+#              #
-#    Updated: 2024/02/01 17:00:49 by lgrimmei         ###   ########.fr        #
+#    Created: 2024/01/29 10:40:31 by lgrimmei          #+#    #+#              #
+#    Updated: 2024/01/31 11:45:55 by lgrimmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,40 +14,51 @@
 GREEN = \033[0;32m
 RESET = \033[0m
 
+# DIRECTORIES
+OBJ_DIR = obj
+SRC_DIR = src
+
 # EXECUTABLE NAME
-NAME		=	megaphone
+NAME = phonebook
 
 # SOURCE FILES
-SRCS		=	megaphone.cpp
-
-# COMPILER
-CC			=	c++
-
-# COMPILATION FLAGS
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98
-
-# COMMANDS
-RM			=	rm -f
+SRCS =	main.cpp\
+		Phonebook.cpp\
+		Contact.cpp
 
 # OBJECT FILES
-OBJS		=	$(SRCS:.cpp=.o)
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
+
+# COMPILER
+CC = c++
+
+# COMPILATION FLAGS
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+
+# COMMANDS
+RM = rm -f
+MKDIR = mkdir -p
+
+# DIRECTORIES
+INCL_DIR = incl
 
 # RULES
-%.o: %.cpp
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@$(MKDIR) $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -I $(INCL_DIR) -c $< -o $@
 
 all : $(NAME)
 
-$(NAME)	: $(OBJS)
-	@$(CC) $(CFLAGS) $^ -o $(NAME)
+$(NAME) : $(OBJS)
+	@$(CC) $(CFLAGS) -I $(INCL_DIR) $^ -o $(NAME)
 	@echo "$(GREEN)./$(NAME) is ready!$(RESET)"
 
-fclean		: clean
+fclean : clean
 	@$(RM) $(NAME)
 
-clean		:
-	@$(RM) $(OBJS)
+clean :
+	@$(RM) -r $(OBJ_DIR)
 
-re			:	fclean all
+re : fclean all
 
-.PHONY		:	all clean fclean re
+.PHONY : all clean fclean re

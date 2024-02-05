@@ -6,7 +6,7 @@
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:16:14 by lgrimmei          #+#    #+#             */
-/*   Updated: 2023/12/11 16:46:00 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:04:48 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **argv, char **env)
 
 	data = malloc(sizeof(t_data));
 	if (!data)
-		retrun (0);
+		return (0);
 	init_data(data, env);
 	if (ac == 1 && argv)
 		ft_minihell(data);

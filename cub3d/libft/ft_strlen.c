@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 16:27:15 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/01 15:24:21 by lgrimmei         ###   ########.fr       */
+/*   Created: 2023/05/02 14:39:28 by lgrimmei          #+#    #+#             */
+/*   Updated: 2023/12/08 13:04:10 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstring>
-#include <iostream>
+#include "libft.h"
+#include <stdio.h>
 
-int main(int argc, char **argv)
+size_t	ft_strlen(const char *s)
 {
-	if (argc == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+	int	i;
+
+	if (!s)
 		return (0);
-	}
-	for (int i = 1; i < argc; i++)
-	{
-		for (int j = 0; j < (int)strlen(argv[i]); j++)
-			std::cout << (char)toupper(argv[i][j]);
-		std::cout << ' ';
-	}
-	std::cout << std::endl;
-	return 0;
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
+
+/*
+int	main(void) {
+	printf("%lu\n", ft_strlen("fdsd"));
+	printf("%lu\n", strlen("2432"));
+}
+*/
