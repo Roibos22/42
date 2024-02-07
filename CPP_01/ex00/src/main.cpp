@@ -5,25 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 19:06:56 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/07 03:35:00 by lgrimmei         ###   ########.fr       */
+/*   Created: 2024/02/05 13:52:59 by lgrimmei          #+#    #+#             */
+/*   Updated: 2024/02/07 03:30:08 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
+#include "Zombie.hpp"
 
 int	main(void)
 {
-	std::string	string = "HI THIS IS BRAIN";
-	std::string	*stringPTR = &string;
-	std::string	&stringRef = string;
+	Zombie *heapZombie = newZombie("Heapy");
+	heapZombie->announce();
+	delete(heapZombie);
 
-	std::cout << "Address of string        : " << &string << std::endl;
-	std::cout << "Address held by stringPTR: " << stringPTR << std::endl;
-	std::cout << "Address of stringREF     : " << &stringRef << std::endl;
+	heapZombie = newZombie("HeapyRegen");
+	heapZombie->announce();
+	delete(heapZombie);
 
-	std::cout << "Value of string          : " << string << std::endl;
-	std::cout << "Value of stringPTR       : " << *stringPTR << std::endl;
-	std::cout << "Value of stringREF       : " << stringRef << std::endl;
+	randomChump("Stacky");
+	randomChump("StackyRegen");
 }

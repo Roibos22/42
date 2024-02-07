@@ -5,25 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 19:06:56 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/07 03:35:00 by lgrimmei         ###   ########.fr       */
+/*   Created: 2024/02/05 13:52:59 by lgrimmei          #+#    #+#             */
+/*   Updated: 2024/02/05 19:04:37 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
+#include "Zombie.hpp"
 
 int	main(void)
 {
-	std::string	string = "HI THIS IS BRAIN";
-	std::string	*stringPTR = &string;
-	std::string	&stringRef = string;
+	Zombie	*horde;
+	int		n;
 
-	std::cout << "Address of string        : " << &string << std::endl;
-	std::cout << "Address held by stringPTR: " << stringPTR << std::endl;
-	std::cout << "Address of stringREF     : " << &stringRef << std::endl;
+	n = 0;
+	horde = zombieHorde(n, "HordeZombie");
+	for (int i = 0; i < n; i++)
+	{
+		horde[i].announce();
+	}
+	delete [] horde;
 
-	std::cout << "Value of string          : " << string << std::endl;
-	std::cout << "Value of stringPTR       : " << *stringPTR << std::endl;
-	std::cout << "Value of stringREF       : " << stringRef << std::endl;
+	n = 1;
+	horde = zombieHorde(n, "HordeZombie");
+	for (int i = 0; i < n; i++)
+	{
+		horde[i].announce();
+	}
+	delete [] horde;
+
+	n = 5;
+	horde = zombieHorde(n, "HordeZombie");
+	for (int i = 0; i < n; i++)
+	{
+		horde[i].announce();
+	}
+	delete [] horde;
 }

@@ -5,25 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 19:06:56 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/07 03:35:00 by lgrimmei         ###   ########.fr       */
+/*   Created: 2024/02/05 13:52:59 by lgrimmei          #+#    #+#             */
+/*   Updated: 2024/02/07 01:26:15 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
+#include "Harl.hpp"
 
 int	main(void)
 {
-	std::string	string = "HI THIS IS BRAIN";
-	std::string	*stringPTR = &string;
-	std::string	&stringRef = string;
+	Harl	harl;
 
-	std::cout << "Address of string        : " << &string << std::endl;
-	std::cout << "Address held by stringPTR: " << stringPTR << std::endl;
-	std::cout << "Address of stringREF     : " << &stringRef << std::endl;
-
-	std::cout << "Value of string          : " << string << std::endl;
-	std::cout << "Value of stringPTR       : " << *stringPTR << std::endl;
-	std::cout << "Value of stringREF       : " << stringRef << std::endl;
+	harl.complain("DEBUG");
+	harl.complain("DEBUG");
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("INFO");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("WARNING");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
+	harl.complain("ERROR");
+	harl.complain("ERROR");
+	harl.complain("FALSE");
+	harl.complain("FALSE");
+	harl.complain("FALSE");
+	return 0;
 }

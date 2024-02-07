@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/05 19:06:25 by lgrimmei          #+#    #+#              #
-#    Updated: 2024/02/07 03:33:37 by lgrimmei         ###   ########.fr        #
+#    Created: 2024/02/06 16:38:54 by lgrimmei          #+#    #+#              #
+#    Updated: 2024/02/07 03:39:09 by lgrimmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ OBJ_DIR = obj
 SRC_DIR = src
 
 # EXECUTABLE NAME
-NAME = hiThisIsBrain
+NAME = sedIsForLosers
 
 # SOURCE FILES
-SRCS =	main.cpp\
+SRCS =	main.cpp
 
 # OBJECT FILES
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))

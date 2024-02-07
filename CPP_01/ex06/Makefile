@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/05 19:06:25 by lgrimmei          #+#    #+#              #
-#    Updated: 2024/02/07 03:33:37 by lgrimmei         ###   ########.fr        #
+#    Created: 2024/02/05 12:12:49 by lgrimmei          #+#    #+#              #
+#    Updated: 2024/02/07 01:27:45 by lgrimmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,11 @@ OBJ_DIR = obj
 SRC_DIR = src
 
 # EXECUTABLE NAME
-NAME = hiThisIsBrain
+NAME = harlFilter
 
 # SOURCE FILES
 SRCS =	main.cpp\
+		Harl.cpp
 
 # OBJECT FILES
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
