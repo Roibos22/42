@@ -1,22 +1,20 @@
 /bin/ls
-
-leaks.res
 microshell
 microshell.c
-microshell.dSYM
 microshell.o
 out.res
 test.sh
+
 /bin/cat microshell.c
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   microshell.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leon <leon@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 04:52:40 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/08 00:08:24 by leon             ###   ########.fr       */
+/*   Updated: 2024/02/08 16:55:56 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +29,11 @@ test.sh
 
 /*not needed in exam, but necessary if you want to use this tester:
 https://github.com/Glagan/42-exam-rank-04/blob/master/microshell/test.sh*/
-#ifdef TEST_SH
+/* #ifdef TEST_SH
 # define TEST		1
 #else
 # define TEST		0
-#endif
+#endif */
 
 void	print_error(char *msg)
 {
@@ -85,7 +83,6 @@ int	main(int argc, char **argv, char **env)
 			if (argv[i] == NULL)
 				pipe_fds[1] = STDOUT_FILENO;
 
-
 			if (fork() == 0)
 			{
 			// Child
@@ -119,9 +116,8 @@ int	main(int argc, char **argv, char **env)
 		}
 	}
 	close(fd_in);
-	if (TEST)		// not needed in exam, but necessary if you want to use this tester:
+	if (1)		// not needed in exam, but necessary if you want to use this tester:
 		while (1);
-	
 }
 
 /*
