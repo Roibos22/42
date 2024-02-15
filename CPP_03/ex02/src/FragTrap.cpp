@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:22:26 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/15 19:29:42 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2024/02/15 19:32:50 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << " - ScavTrap - " << this->getName() << " was born and says hi!" << std::endl;
-	this->setTrapType(" - ScavTrap - ");
+	std::cout << " - FragTrap - " << this->getName() << " was born and says moin!" << std::endl;
+	this->setTrapType(" - FragTrap - ");
 	this->setName(name);
 	this->setHitPoints(100);
-	this->setEnergyPoints(50);
-	this->setAttackDamage(20);
+	this->setEnergyPoints(100);
+	this->setAttackDamage(30);
 }
 
-ScavTrap::~ScavTrap()
+FragTrap::~FragTrap()
 {
-	std::cout << " - ScavTrap - " << this->getName() << " died and says bye... :(" << std::endl;
+	std::cout << " - ScavTrap - " << this->getName() << " died and says tschuss... :(" << std::endl;
 }
 
-void	ScavTrap::attack(const std::string& target)
+void	FragTrap::attack(const std::string& target)
 {
 	if (this->getHitPoints() <= 0)
 		std::cout << this->getTrapType() << this->getName() << " has no hitPoints left to attack" << std::endl;
@@ -40,7 +40,7 @@ void	ScavTrap::attack(const std::string& target)
 	}
 }
 
-void	ScavTrap::guardGate(void)
+void	FragTrap::highFivesGuys(void)
 {
-	std::cout << this->getTrapType() << this->getName() << " is now in Gate Keeper mode" << std::endl;
+	std::cout << this->getTrapType() << this->getName() << " is requesting a HighFive from the evaluator!" << std::endl;
 }

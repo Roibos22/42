@@ -6,7 +6,7 @@
 #    By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 14:17:27 by lgrimmei          #+#    #+#              #
-#    Updated: 2024/02/15 16:20:19 by lgrimmei         ###   ########.fr        #
+#    Updated: 2024/02/15 22:32:07 by lgrimmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,14 @@ OBJ_DIR = obj
 SRC_DIR = src
 
 # EXECUTABLE NAME
-NAME = clapTrap
+NAME = diamondTrap
 
 # SOURCE FILES
 SRCS =	main.cpp\
-		ClapTrap.cpp
+		ClapTrap.cpp\
+		ScavTrap.cpp\
+		FragTrap.cpp\
+		DiamondTrap.cpp
 
 # OBJECT FILES
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
@@ -32,7 +35,7 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 CC = c++
 
 # COMPILATION FLAGS
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98
 
 # COMMANDS
 RM = rm -f

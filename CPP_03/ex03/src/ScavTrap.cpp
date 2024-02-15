@@ -6,11 +6,20 @@
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:22:26 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/15 19:29:42 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:51:50 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap()
+{
+	std::cout << " - ScavTrap - was born by default!" << std::endl;
+	this->setHitPoints(100);
+	this->setEnergyPoints(50);
+	this->setAttackDamage(20);
+}
+
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
@@ -43,4 +52,13 @@ void	ScavTrap::attack(const std::string& target)
 void	ScavTrap::guardGate(void)
 {
 	std::cout << this->getTrapType() << this->getName() << " is now in Gate Keeper mode" << std::endl;
+}
+
+std::ostream	&operator<<(std::ostream &stream, ScavTrap const &scavTrap)
+{
+	stream << scavTrap.getTrapType() << scavTrap.getName()
+			  << ", hitPoints: " << scavTrap.getHitPoints()
+			  << ", energyPoints: " << scavTrap.getEnergyPoints()
+			  << ", attackDamage: " << scavTrap.getAttackDamage() << std::endl;
+	return (stream);
 }

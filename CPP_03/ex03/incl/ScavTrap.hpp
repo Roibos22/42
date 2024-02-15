@@ -6,21 +6,21 @@
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:18:29 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/15 15:26:47 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:47:16 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCAV_TRAP_HPP
 # define SCAV_TRAP_HPP
 
-#include <iostream>
 #include "ClapTrap.hpp"
 
-class	ScavTrap: public ClapTrap
+class	ScavTrap: virtual public ClapTrap
 {
 	private:
 
 	public:
+		ScavTrap();
 		ScavTrap(std::string name);
 		~ScavTrap();
 
@@ -28,6 +28,6 @@ class	ScavTrap: public ClapTrap
 		void	guardGate(void);
 };
 
-//std::ostream & operator<<(std::ostream &o, ClapTrap const &i);
+std::ostream	&operator<<(std::ostream &stream, ScavTrap const &scavTrap);
 
 #endif

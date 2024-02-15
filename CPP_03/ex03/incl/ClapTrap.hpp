@@ -6,7 +6,7 @@
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:18:29 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/15 15:17:51 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:38:41 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class	ClapTrap
 
 	public:
 		// DE/CONSTRUCTORS
+		ClapTrap();
 		ClapTrap(std::string name);
 		~ClapTrap();
 

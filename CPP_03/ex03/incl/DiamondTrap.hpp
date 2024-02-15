@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:18:29 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/15 15:26:47 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:45:13 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAV_TRAP_HPP
-# define SCAV_TRAP_HPP
+#ifndef DIAMOND_TRAP_HPP
+# define DIAMOND_TRAP_HPP
 
-#include <iostream>
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class	ScavTrap: public ClapTrap
+class	DiamondTrap: public ScavTrap, public FragTrap
 {
 	private:
+		std::string	_name;
 
 	public:
-		ScavTrap(std::string name);
-		~ScavTrap();
+		DiamondTrap(std::string name);
+		~DiamondTrap();
 
-		void	attack(const std::string& target);
-		void	guardGate(void);
+		using ScavTrap::attack;
+		void		whoAmI(void);
+		//std::string	getName() const;
 };
 
-//std::ostream & operator<<(std::ostream &o, ClapTrap const &i);
+std::ostream	&operator<<(std::ostream &stream, DiamondTrap const &diaTrap);
 
 #endif

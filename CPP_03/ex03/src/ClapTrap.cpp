@@ -6,12 +6,21 @@
 /*   By: lgrimmei <lgrimmei@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:22:26 by lgrimmei          #+#    #+#             */
-/*   Updated: 2024/02/15 19:23:29 by lgrimmei         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:51:34 by lgrimmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap()
+{
+	std::cout << " - ClapTrap - was born by default!" << std::endl;
+	this->_hitPoints = 10;
+	this->_energyPoints = 10;
+	this->_attackDamage = 0;
+}
+
 
 ClapTrap::ClapTrap(std::string name)
 {
